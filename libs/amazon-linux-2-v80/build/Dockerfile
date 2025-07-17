@@ -3,7 +3,7 @@ FROM amazonlinux:2.0.20240109.0
 ENV PHP=php80
 
 RUN yum install -y \
-        https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
+        https://archives.fedoraproject.org/pub/archive/epel/7/x86_64/Packages/e/epel-release-7-14.noarch.rpm \
         http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
         yum-utils \
         epel-release \
