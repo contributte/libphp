@@ -22,6 +22,7 @@ RUN yum install -y \
         ${PHP}-php-cgi \
         ${PHP}-php-ds \
         ${PHP}-php-fpm \
+        ${PHP}-php-ffi \
         ${PHP}-php-grpc \
         ${PHP}-php-imap \
         ${PHP}-php-igbinary \
@@ -72,6 +73,7 @@ RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/d
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/exif.so
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/fileinfo.so
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/ftp.so
+RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/ffi.so
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/geoip.so
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/gettext.so
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/grpc.so
