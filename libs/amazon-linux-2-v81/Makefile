@@ -112,6 +112,7 @@ dist: build
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libedit.so.0 > ${DIST_LIB_PATH}/libedit.so.0
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libexpat.so.1 > ${DIST_LIB_PATH}/libexpat.so.1
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libexslt.so.0 > ${DIST_LIB_PATH}/libexslt.so.0
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libffi.so.6 > ${DIST_LIB_PATH}/libffi.so.6
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libgcrypt.so.11 > ${DIST_LIB_PATH}/libgcrypt.so.11
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libGeoIP.so.1 > ${DIST_LIB_PATH}/libGeoIP.so.1
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libgpg-error.so.0 > ${DIST_LIB_PATH}/libgpg-error.so.0

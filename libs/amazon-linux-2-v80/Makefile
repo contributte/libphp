@@ -107,6 +107,7 @@ dist: build
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libcap-ng.so.0 > ${DIST_LIB_PATH}/libcap-ng.so.0
 	# docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libcapstone.so.4 > ${DIST_LIB_PATH}/libcapstone.so.4
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libcrypt.so.1 > ${DIST_LIB_PATH}/libcrypt.so.1
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libffi.so.6 > ${DIST_LIB_PATH}/libffi.so.6
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libcrypto.so.10 > ${DIST_LIB_PATH}/libcrypto.so.10
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libcurl.so.4 > ${DIST_LIB_PATH}/libcurl.so.4
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libedit.so.0 > ${DIST_LIB_PATH}/libedit.so.0
