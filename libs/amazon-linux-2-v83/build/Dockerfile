@@ -7,7 +7,11 @@ RUN amazon-linux-extras install epel -y
 RUN yum install -y \
         http://rpms.remirepo.net/enterprise/remi-release-7.rpm \
         yum-utils \
-        curl
+        curl \
+        tar \
+        wget \
+        make \
+        gcc
 
 RUN yum-config-manager --enable remi-${PHP}
 RUN yum update -y && yum upgrade -y

@@ -5,10 +5,10 @@ const index = require('./../../dist/index');
 const toUnixPermissions = mode => '0' + (mode & parseInt('777', 8)).toString(8);
 
 test('count files', async () => {
-  expect(Object.keys(await index.getFiles()).length).toEqual(106);
+  expect(Object.keys(await index.getFiles()).length).toEqual(110);
   expect(Object.keys(await index.getPhpFiles()).length).toEqual(6);
-  expect(Object.keys(await index.getPhpModulesFiles()).length).toEqual(47);
-  expect(Object.keys(await index.getSharedLibsFiles()).length).toEqual(53);
+  expect(Object.keys(await index.getPhpModulesFiles()).length).toEqual(44);
+  expect(Object.keys(await index.getSharedLibsFiles()).length).toEqual(60);
 });
 
 test('has composer bin', async () => {

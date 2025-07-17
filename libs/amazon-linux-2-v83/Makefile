@@ -164,6 +164,8 @@ dist: build
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libutf8proc.so.1 > ${DIST_LIB_PATH}/libutf8proc.so.1
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libpsl.so.5 > ${DIST_LIB_PATH}/libpsl.so.5
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libcapstone.so.4 > ${DIST_LIB_PATH}/libcapstone.so.4
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libplc4.so > ${DIST_LIB_PATH}/libplc4.so
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libnspr4.so > ${DIST_LIB_PATH}/libnspr4.so
 
 	# Remove temporary PHP container
 	docker rm --force ${DOCKER_CONTAINER} || true
