@@ -12,13 +12,23 @@
 
 ## ⚙️ Runtimes
 
-- [@libphp/amazon-linux-2-v72](@libphp/amazon-linux-2-v72)
-- [@libphp/amazon-linux-2-v73](@libphp/amazon-linux-2-v73)
-- [@libphp/amazon-linux-2-v74](@libphp/amazon-linux-2-v74)
-- [@libphp/amazon-linux-2-v80](@libphp/amazon-linux-2-v80)
-- [@libphp/amazon-linux-2-v81](@libphp/amazon-linux-2-v81)
-- [@libphp/amazon-linux-2-v82](@libphp/amazon-linux-2-v82)
-- [@libphp/amazon-linux-2-v83](@libphp/amazon-linux-2-v83)
+### Amazon Linux 2
+
+- [@libphp/amazon-linux-2-v72](libs/amazon-linux-2-v72) - PHP 7.2
+- [@libphp/amazon-linux-2-v73](libs/amazon-linux-2-v73) - PHP 7.3
+- [@libphp/amazon-linux-2-v74](libs/amazon-linux-2-v74) - PHP 7.4
+- [@libphp/amazon-linux-2-v80](libs/amazon-linux-2-v80) - PHP 8.0
+- [@libphp/amazon-linux-2-v81](libs/amazon-linux-2-v81) - PHP 8.1
+- [@libphp/amazon-linux-2-v82](libs/amazon-linux-2-v82) - PHP 8.2
+- [@libphp/amazon-linux-2-v83](libs/amazon-linux-2-v83) - PHP 8.3
+
+### Amazon Linux 2023
+
+- [@libphp/amazon-linux-2023-v84](libs/amazon-linux-2023-v84) - PHP 8.4
+
+### AlmaLinux 9 (EL9)
+
+- [@libphp/almalinux-9-v85](libs/almalinux-9-v85) - PHP 8.5
 
 ## ⚙️ Usage
 
