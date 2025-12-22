@@ -1,0 +1,32 @@
+{
+  "name": "@libphp/almalinux-9-v85",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "homepage": "https://github.com/contributte/libphp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/contributte/libphp.git"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0",
+    "jest": "^26.1.0",
+    "typescript": "^4.6.2"
+  },
+  "files": [
+    "dist",
+    "native"
+  ],
+  "jest": {
+    "testMatch": [
+      "**/test/**/*.js"
+    ]
+  },
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc",
+    "test": "jest",
+    "test-watch": "jest --watch",
+    "prepublishOnly": "tsc"
+  }
+}
