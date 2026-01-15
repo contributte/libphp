@@ -101,6 +101,8 @@ dist: build
 
 	# Copy static libraries. Needed by the extensions above.
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libbz2.so.1 > ${DIST_LIB_PATH}/libbz2.so.1
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libbrotlicommon.so.1 > ${DIST_LIB_PATH}/libbrotlicommon.so.1
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libbrotlidec.so.1 > ${DIST_LIB_PATH}/libbrotlidec.so.1
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libcrypt.so.2 > ${DIST_LIB_PATH}/libcrypt.so.2
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libcrypto.so.3 > ${DIST_LIB_PATH}/libcrypto.so.3
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libcurl.so.4 > ${DIST_LIB_PATH}/libcurl.so.4
@@ -108,25 +110,42 @@ dist: build
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libexpat.so.1 > ${DIST_LIB_PATH}/libexpat.so.1
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libexslt.so.0 > ${DIST_LIB_PATH}/libexslt.so.0
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libffi.so.8 > ${DIST_LIB_PATH}/libffi.so.8
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libfontconfig.so.1 > ${DIST_LIB_PATH}/libfontconfig.so.1
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libfreetype.so.6 > ${DIST_LIB_PATH}/libfreetype.so.6
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libgd.so.3 > ${DIST_LIB_PATH}/libgd.so.3
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libgmp.so.10 > ${DIST_LIB_PATH}/libgmp.so.10
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libgraphite2.so.3 > ${DIST_LIB_PATH}/libgraphite2.so.3
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libharfbuzz.so.0 > ${DIST_LIB_PATH}/libharfbuzz.so.0
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libjbig.so.2.1 > ${DIST_LIB_PATH}/libjbig.so.2.1
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libjpeg.so.62 > ${DIST_LIB_PATH}/libjpeg.so.62
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libpng16.so.16 > ${DIST_LIB_PATH}/libpng16.so.16
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libicudata.so.67 > ${DIST_LIB_PATH}/libicudata.so.67
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libicui18n.so.67 > ${DIST_LIB_PATH}/libicui18n.so.67
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libicuio.so.67 > ${DIST_LIB_PATH}/libicuio.so.67
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libicuuc.so.67 > ${DIST_LIB_PATH}/libicuuc.so.67
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libidn2.so.0 > ${DIST_LIB_PATH}/libidn2.so.0
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/liblmdb.so.0.0.0 > ${DIST_LIB_PATH}/liblmdb.so.0.0.0
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/liblzma.so.5 > ${DIST_LIB_PATH}/liblzma.so.5
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libtokyocabinet.so.9 > ${DIST_LIB_PATH}/libtokyocabinet.so.9
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libncurses.so.6 > ${DIST_LIB_PATH}/libncurses.so.6
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libnghttp2.so.14 > ${DIST_LIB_PATH}/libnghttp2.so.14
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libonig.so.5 > ${DIST_LIB_PATH}/libonig.so.5
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libpq.so.5 > ${DIST_LIB_PATH}/libpq.so.5
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libpsl.so.5 > ${DIST_LIB_PATH}/libpsl.so.5
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libsasl2.so.3 > ${DIST_LIB_PATH}/libsasl2.so.3
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libsodium.so.26 > ${DIST_LIB_PATH}/libsodium.so.26
-	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libgmp.so.10 > ${DIST_LIB_PATH}/libgmp.so.10
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libldap_r-2.4.so.2 > ${DIST_LIB_PATH}/libldap_r-2.4.so.2
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/liblber-2.4.so.2 > ${DIST_LIB_PATH}/liblber-2.4.so.2
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libsqlite3.so.0 > ${DIST_LIB_PATH}/libsqlite3.so.0
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libssl.so.3 > ${DIST_LIB_PATH}/libssl.so.3
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libtiff.so.5 > ${DIST_LIB_PATH}/libtiff.so.5
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libtinfo.so.6 > ${DIST_LIB_PATH}/libtinfo.so.6
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libunistring.so.2 > ${DIST_LIB_PATH}/libunistring.so.2
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libwebp.so.7 > ${DIST_LIB_PATH}/libwebp.so.7
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libX11.so.6 > ${DIST_LIB_PATH}/libX11.so.6
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libXau.so.6 > ${DIST_LIB_PATH}/libXau.so.6
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libxcb.so.1 > ${DIST_LIB_PATH}/libxcb.so.1
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libXpm.so.4 > ${DIST_LIB_PATH}/libXpm.so.4
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libxml2.so.2 > ${DIST_LIB_PATH}/libxml2.so.2
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libxslt.so.1 > ${DIST_LIB_PATH}/libxslt.so.1
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/libzip.so.5 > ${DIST_LIB_PATH}/libzip.so.5
@@ -141,7 +160,7 @@ dist: build
 
 publish:
 	rm -rf ./dist
-	npm publish --access public --tag latest -timeout=9999999
+	npm publish --access public --tag latest
 
 publish-canary:
 	rm -rf ./dist
