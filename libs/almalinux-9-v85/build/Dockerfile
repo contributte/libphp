@@ -52,6 +52,10 @@ RUN dnf install -y \
 # Install PostgreSQL client library
 RUN dnf install -y postgresql
 
+# Install libzip (required by zip extension)
+# Use remi-libzip which matches the version the zip extension was compiled against
+RUN dnf install -y remi-libzip
+
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | /opt/remi/${PHP}/root/usr/bin/php -- --install-dir=/usr/bin --filename=composer
 
