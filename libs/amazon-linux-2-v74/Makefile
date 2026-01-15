@@ -173,7 +173,7 @@ dist: build
 
 publish:
 	rm -rf ./dist
-	npm publish --access public --tag latest -timeout=9999999
+	npm publish --access public --tag latest
 
 publish-canary:
 	rm -rf ./dist
