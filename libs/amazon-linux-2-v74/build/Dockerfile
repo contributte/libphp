@@ -48,7 +48,8 @@ RUN yum install -y \
         ${PHP}-php-tokenizer \
         ${PHP}-php-uuid \
         ${PHP}-php-xml \
-        ${PHP}-php-xmlrpc
+        ${PHP}-php-xmlrpc \
+        ${PHP}-php-zip
 
 RUN amazon-linux-extras install postgresql14
 
@@ -107,6 +108,7 @@ RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/x
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/xmlrpc.so
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/xmlwriter.so
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/xsl.so
+RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/lib64/php/modules/zip.so
 
 WORKDIR /var/task
 
