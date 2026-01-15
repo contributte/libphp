@@ -28,3 +28,11 @@ rebuild-track:
 			git commit -m "[$$version] rebuild php" || true; \
 		fi; \
 	done
+
+# Run tests in all libs
+.PHONY: test
+test:
+	@for dir in $(LIBS); do \
+		echo "Running tests in $$(basename $$dir)..."; \
+		(cd $$dir && npm test) || echo "Tests failed in $$(basename $$dir)"; \
+	done
