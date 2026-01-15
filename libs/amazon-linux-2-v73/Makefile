@@ -8,13 +8,14 @@ DIST_LIB_PATH=${DIST_PATH}/lib
 
 DOCKER_IMAGE=libphp/amazon-linux-2-v73
 DOCKER_CONTAINER=libphp-amazon-linux-2-v73
+DOCKER_PLATFORM=linux/amd64
 
 # ######################
 # Building Docker images
 # ######################
 
 build:
-	docker build -t ${DOCKER_IMAGE} -f ./build/Dockerfile ./build
+	docker buildx build --platform ${DOCKER_PLATFORM} -t ${DOCKER_IMAGE} -f ./build/Dockerfile ./build
 
 # #################################################
 # Separate PHP bins + shared libs from Docker image
@@ -31,7 +32,7 @@ dist: build
 	# Remove old PHP container
 	docker rm --force ${DOCKER_CONTAINER} || true
 	# Run new one PHP container
-	docker run -it -d --name ${DOCKER_CONTAINER} ${DOCKER_IMAGE} /bin/bash
+	docker run -it -d --platform ${DOCKER_PLATFORM} --name ${DOCKER_CONTAINER} ${DOCKER_IMAGE} /bin/bash
 
 	# Copy composer, php, php-cgi, php-fpm binaries
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/bin/composer > ${DIST_PHP_PATH}/composer
