@@ -83,6 +83,7 @@ dist: build
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/php8.4/modules/phar.so > ${DIST_PHP_MODULES_PATH}/phar.so
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/php8.4/modules/posix.so > ${DIST_PHP_MODULES_PATH}/posix.so
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/php8.4/modules/redis.so > ${DIST_PHP_MODULES_PATH}/redis.so
+	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/php/modules/mongodb.so > ${DIST_PHP_MODULES_PATH}/mongodb.so
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/php8.4/modules/shmop.so > ${DIST_PHP_MODULES_PATH}/shmop.so
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/php8.4/modules/simplexml.so > ${DIST_PHP_MODULES_PATH}/simplexml.so
 	docker exec ${DOCKER_CONTAINER} /bin/cat /usr/lib64/php8.4/modules/soap.so > ${DIST_PHP_MODULES_PATH}/soap.so

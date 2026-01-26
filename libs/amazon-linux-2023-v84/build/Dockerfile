@@ -46,6 +46,11 @@ RUN dnf install -y \
         ${PHP}-pecl-msgpack \
         ${PHP}-pecl-redis6
 
+# Install MongoDB extension from PECL (not available as native AL2023 package)
+RUN dnf install -y ${PHP}-devel ${PHP}-pear openssl-devel
+RUN pecl install mongodb
+RUN echo "extension=mongodb.so" > /etc/php.d/50-mongodb.ini
+
 # Install PostgreSQL client library
 RUN dnf install -y postgresql15
 
@@ -58,10 +63,13 @@ RUN patchelf --set-rpath '$ORIGIN' /usr/bin/php || true
 RUN patchelf --set-rpath '$ORIGIN' /usr/bin/php-cgi || true
 RUN patchelf --set-rpath '$ORIGIN' /usr/sbin/php-fpm || true
 
-# Patch extension modules
+# Patch extension modules (native packages)
 RUN for so in /usr/lib64/php8.4/modules/*.so; do \
         patchelf --set-rpath '$ORIGIN' "$so" || true; \
     done
+
+# Patch PECL-compiled mongodb extension
+RUN patchelf --set-rpath '$ORIGIN' /usr/lib64/php/modules/mongodb.so || true
 
 WORKDIR /var/task
 
