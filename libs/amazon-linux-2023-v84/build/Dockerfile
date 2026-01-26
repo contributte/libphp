@@ -47,7 +47,8 @@ RUN dnf install -y \
         ${PHP}-pecl-redis6
 
 # Install MongoDB extension from PECL (not available as native AL2023 package)
-RUN dnf install -y ${PHP}-devel ${PHP}-pear openssl-devel
+# Note: php-pear is the generic PEAR package, not php8.4-pear
+RUN dnf install -y ${PHP}-devel php-pear openssl-devel
 RUN pecl install mongodb
 RUN echo "extension=mongodb.so" > /etc/php.d/50-mongodb.ini
 
