@@ -49,6 +49,11 @@ RUN dnf install -y \
         ${PHP}-php-pecl-redis6 \
     || true
 
+# Install MongoDB extension from PECL (may not be available as Remi package for PHP 8.5 yet)
+RUN dnf install -y ${PHP}-php-devel ${PHP}-php-pear openssl-devel
+RUN source /opt/remi/${PHP}/enable && pecl install mongodb
+RUN echo "extension=mongodb.so" > /etc/opt/remi/${PHP}/php.d/50-mongodb.ini
+
 # Install PostgreSQL client library
 RUN dnf install -y postgresql
 
@@ -64,7 +69,7 @@ RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/bin/php || true
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/bin/php-cgi || true
 RUN patchelf --set-rpath '$ORIGIN' /opt/remi/${PHP}/root/usr/sbin/php-fpm || true
 
-# Patch extension modules
+# Patch extension modules (includes PECL-compiled mongodb)
 RUN for so in /opt/remi/${PHP}/root/usr/lib64/php/modules/*.so; do \
         patchelf --set-rpath '$ORIGIN' "$so" || true; \
     done
