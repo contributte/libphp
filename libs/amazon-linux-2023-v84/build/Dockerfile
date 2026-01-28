@@ -46,11 +46,18 @@ RUN dnf install -y \
         ${PHP}-pecl-msgpack \
         ${PHP}-pecl-redis6
 
-# Install MongoDB extension from PECL (not available as native AL2023 package)
-# Note: php-pear is the generic PEAR package, not php8.4-pear
-RUN dnf install -y ${PHP}-devel php-pear openssl-devel
-RUN pecl install mongodb
-RUN echo "extension=mongodb.so" > /etc/php.d/50-mongodb.ini
+# Install MongoDB extension - compile from source (PEAR not available in AL2023)
+RUN dnf install -y ${PHP}-devel openssl-devel cyrus-sasl-devel
+RUN curl -sL https://pecl.php.net/get/mongodb -o /tmp/mongodb.tgz && \
+    mkdir -p /tmp/mongodb && \
+    tar -xzf /tmp/mongodb.tgz -C /tmp/mongodb --strip-components=1 && \
+    cd /tmp/mongodb && \
+    phpize && \
+    ./configure --with-php-config=/usr/bin/php-config && \
+    make -j$(nproc) && \
+    make install && \
+    echo "extension=mongodb.so" > /etc/php.d/50-mongodb.ini && \
+    rm -rf /tmp/mongodb /tmp/mongodb.tgz
 
 # Install PostgreSQL client library
 RUN dnf install -y postgresql15
@@ -64,13 +71,10 @@ RUN patchelf --set-rpath '$ORIGIN' /usr/bin/php || true
 RUN patchelf --set-rpath '$ORIGIN' /usr/bin/php-cgi || true
 RUN patchelf --set-rpath '$ORIGIN' /usr/sbin/php-fpm || true
 
-# Patch extension modules (native packages)
+# Patch extension modules (native packages + compiled mongodb)
 RUN for so in /usr/lib64/php8.4/modules/*.so; do \
         patchelf --set-rpath '$ORIGIN' "$so" || true; \
     done
-
-# Patch PECL-compiled mongodb extension
-RUN patchelf --set-rpath '$ORIGIN' /usr/lib64/php/modules/mongodb.so || true
 
 WORKDIR /var/task
 
