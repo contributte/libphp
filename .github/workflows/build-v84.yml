@@ -1,0 +1,52 @@
+name: Build PHP 8.4
+
+on:
+  push:
+    paths:
+      - 'libs/amazon-linux-2023-v84/**'
+      - '.github/workflows/build-v84.yml'
+  pull_request:
+    paths:
+      - 'libs/amazon-linux-2023-v84/**'
+      - '.github/workflows/build-v84.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        working-directory: libs/amazon-linux-2023-v84
+        run: make build
+
+      - name: Start container
+        run: |
+          docker run -d --name php84-test libphp/amazon-linux-2023-v84 sleep 300
+
+      - name: Validate PHP version
+        run: |
+          docker exec php84-test /usr/bin/php -v
+
+      - name: Validate MongoDB extension is loaded
+        run: |
+          docker exec php84-test /usr/bin/php -m | grep -q mongodb
+          echo "MongoDB extension is available"
+
+      - name: Validate MongoDB extension details
+        run: |
+          docker exec php84-test /usr/bin/php -i | grep -A5 "mongodb"
+
+      - name: Test MongoDB extension functionality
+        run: |
+          docker exec php84-test /usr/bin/php -r "echo 'MongoDB version: ' . phpversion('mongodb') . PHP_EOL;"
+
+      - name: Cleanup
+        if: always()
+        run: |
+          docker rm -f php84-test || true
